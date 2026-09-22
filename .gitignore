@@ -1,0 +1,17 @@
+# 環境與密鑰
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# 系統
+.DS_Store
+
+# 大型 / 產生出來的資料(視你要不要把資料集也版本控管而定)
+data/raw/*.json
+data/processed/*
+!data/processed/.gitkeep
