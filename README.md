@@ -1,9 +1,5 @@
 # Medical Literature RAG
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![Status](https://img.shields.io/badge/status-research%20project-orange)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
-
 一個檢索增強生成(RAG)系統,用來查詢慢性腎臟病(CKD)與腎臟移植相關的 PubMed 醫學文獻,並用系統化的消融實驗(Ablation Study)與統計檢定,量化比較不同檢索策略的實際效果。非臨床診斷工具,僅供文獻研究輔助。
 
 ---
@@ -143,9 +139,9 @@ python generation/answer_generator.py \
 
 四組的 Recall@5、MRR 分數經 Shapiro-Wilk 檢定,均顯著偏離常態分佈,因此同時採用母數(ANOVA)與無母數(Friedman/Wilcoxon)兩條路線交叉驗證,而非只依賴其中一種。
 
-- ✅ **確定成立**:A/B/C/D 四組在 **Recall@5** 上整體存在顯著差異(Friedman p = 0.013);**Reranker 對 Recall@5 有顯著的正面效果,且不受檢索方式影響**(ANOVA 主效應 p = 0.018)——這是整組實驗裡最站得住腳的結論。個別配對比較中,A vs D(Dense 底下的 Reranker 效果)p = 0.0579,最接近顯著但未跨過門檻
-- ⚠️ **數字有差異、統計未達顯著**:Dense 平均 Recall@5 高於 Hybrid,但 ANOVA 主效應 p = 0.163,25 題樣本量下尚不能排除抽樣雜訊;交互作用同樣不顯著(p = 0.240)
-- 🔁 **MRR 上沒有觀察到同樣的顯著性**:同一套四種檢定方法(常態性檢定、ANOVA、Friedman、Wilcoxon)套用在 MRR 上,**全部未達顯著**(Friedman p = 0.214;ANOVA 的 Reranker 主效應 p = 0.206)。Recall@5 與 MRR 這兩個指標的結論不完全一致,不是檢定出錯,而是提醒:同一組資料換一個評估角度,顯著性結論可能不同,不宜只憑單一指標下定論
+-  **確定成立**:A/B/C/D 四組在 **Recall@5** 上整體存在顯著差異(Friedman p = 0.013);**Reranker 對 Recall@5 有顯著的正面效果,且不受檢索方式影響**(ANOVA 主效應 p = 0.018)——這是整組實驗裡最站得住腳的結論。個別配對比較中,A vs D(Dense 底下的 Reranker 效果)p = 0.0579,最接近顯著但未跨過門檻
+-  **數字有差異、統計未達顯著**:Dense 平均 Recall@5 高於 Hybrid,但 ANOVA 主效應 p = 0.163,25 題樣本量下尚不能排除抽樣雜訊;交互作用同樣不顯著(p = 0.240)
+-  **MRR 上沒有觀察到同樣的顯著性**:同一套四種檢定方法(常態性檢定、ANOVA、Friedman、Wilcoxon)套用在 MRR 上,**全部未達顯著**(Friedman p = 0.214;ANOVA 的 Reranker 主效應 p = 0.206)。Recall@5 與 MRR 這兩個指標的結論不完全一致,不是檢定出錯,而是提醒:同一組資料換一個評估角度,顯著性結論可能不同,不宜只憑單一指標下定論
 
 完整的逐項檢定結果(含全部四組配對比較的 p 值),見 `data/evaluation/statistical_analysis_report.txt`。
 
