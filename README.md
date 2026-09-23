@@ -4,7 +4,6 @@
 
 ---
 
----
 
 ## TL;DR — 這個專案做了什麼
 
@@ -41,43 +40,42 @@
 
 ## Architecture
 
-```
-                    使用者問題
-                        │
-        ┌───────────────┼───────────────┐
-        │                               │
-   Dense 檢索                      BM25 檢索
- (MedCPT Query Encoder)          (關鍵字比對)
-        │                               │
-        └───────────────┬───────────────┘
-                         │
-                RRF 融合(Hybrid)
-                         │
-              MedCPT Cross-Encoder
-                  Reranker
-                         │
-                    Top-5 段落
-                         │
-              LLM 生成答案(附 PMID 引用)
-                         │
-                   Faithfulness 導向
-                    System Prompt
+**離線階段:資料準備(執行一次)**
+
+```mermaid
+graph LR
+    A[PubMed API] -->|pubmed_loader.py<br/>保留段落 Label| B[(data/raw/*.json)]
+    B -->|chunking.py<br/>結構感知切段| C[(data/processed/<br/>chunks.json)]
+    C -->|embedder.py<br/>MedCPT Article Encoder| D[(FAISS 向量索引)]
+
+    style A fill:#e3f2fd,stroke:#1565c0
+    style B fill:#f5f5f5,stroke:#666
+    style C fill:#f5f5f5,stroke:#666
+    style D fill:#e8f5e9,stroke:#2e7d32
 ```
 
-資料準備階段(離線,執行一次):
+**查詢階段:即時回答問題**
 
+```mermaid
+graph LR
+    Q([使用者問題]) --> D["Dense 檢索<br/>MedCPT Query Encoder"]
+    Q --> B["BM25 檢索<br/>關鍵字比對"]
+    D --> RRF{"RRF 融合<br/>Hybrid"}
+    B --> RRF
+    RRF --> RR["MedCPT Cross-Encoder<br/>Reranker"]
+    RR --> TOP[/Top-5 段落/]
+    TOP --> GEN["LLM 生成答案<br/>附 PMID 引用"]
+    GEN --> A([Faithfulness 導向<br/>System Prompt 把關])
+
+    style Q fill:#e3f2fd,stroke:#1565c0
+    style D fill:#fff3e0,stroke:#e65100
+    style B fill:#fff3e0,stroke:#e65100
+    style RRF fill:#fce4ec,stroke:#ad1457
+    style RR fill:#fce4ec,stroke:#ad1457
+    style GEN fill:#e8f5e9,stroke:#2e7d32
+    style A fill:#e8f5e9,stroke:#2e7d32
 ```
-PubMed E-utilities API
-        │  ingestion/pubmed_loader.py(保留段落 Label)
-        ▼
-   data/raw/*.json
-        │  preprocessing/chunking.py(結構感知切段)
-        ▼
-data/processed/chunks.json
-        │  embedding/embedder.py(MedCPT Article Encoder)
-        ▼
-  FAISS 向量索引 + chunks_meta.json
-```
+
 
 ## Tech Stack
 
