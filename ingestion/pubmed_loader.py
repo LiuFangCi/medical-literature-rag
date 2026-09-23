@@ -76,7 +76,20 @@ def fetch_details(pmids: list) -> list:
         title = "".join(title_el.itertext()).strip() if title_el is not None else ""
 
         abstract_parts = article.findall(".//Abstract/AbstractText")
-        abstract = " ".join("".join(part.itertext()).strip() for part in abstract_parts)
+        abstract_sections = []
+        combined_parts = []
+        for part in abstract_parts:
+            # NLM stores the section name (e.g. "BACKGROUND", "METHODS") as
+            # an XML attribute, not as text inside the abstract itself —
+            # this is what the earlier version of this function silently
+            # discarded, making structure-aware chunking impossible.
+            label = part.get("Label") or part.get("NlmCategory") or ""
+            text = "".join(part.itertext()).strip()
+            if not text:
+                continue
+            abstract_sections.append({"label": label, "text": text})
+            combined_parts.append(text)
+        abstract = " ".join(combined_parts)
 
         year_el = article.find(".//PubDate/Year")
         if year_el is None:
@@ -104,6 +117,7 @@ def fetch_details(pmids: list) -> list:
                 "pmid": pmid,
                 "title": title,
                 "abstract": abstract,
+                "abstract_sections": abstract_sections,
                 "year": year,
                 "authors": authors,
                 "journal": journal,

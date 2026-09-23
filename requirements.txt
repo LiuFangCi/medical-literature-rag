@@ -2,13 +2,20 @@
 requests>=2.31.0
 python-dotenv>=1.0.0
 
-# Phase 3a: 本地 Embedding + 向量檢索(不需要 API Key)
-sentence-transformers>=2.7.0
+# Phase 3a: MedCPT Embedding + 向量檢索(本地跑,不需要 API Key)
+transformers>=4.30.0
+torch>=2.0.0
 faiss-cpu>=1.8.0
 
 # Phase 3b: LLM 生成答案(需要 OpenAI API Key)
 openai>=1.40.0
 
+# Phase 4: BM25 / Hybrid Search / Reranker
+rank-bm25>=0.2.2
+
+# 統計分析
+pandas>=2.0.0
+pingouin>=0.5.4
+
 # 之後 Phase 會陸續加入,先不用裝:
-# rank-bm25           # Phase 4: BM25 / Hybrid Search
 # streamlit           # Phase 6: Demo App

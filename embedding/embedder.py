@@ -1,13 +1,18 @@
 """
-Phase 3a: Turn chunked text into vector embeddings and build a FAISS index.
+Phase 3a (revised): Embed chunks with MedCPT (medical-domain specific)
+and build a FAISS index.
 
-Reads data/processed/chunks.json (from preprocessing/chunking.py), embeds
-each chunk's text with a local Sentence-Transformers model (no API key
-needed), and saves:
-  - a FAISS index of the embeddings (data/processed/faiss.index)
-  - the chunk metadata in the same order as the index, so a search result
-    (an index position) can be mapped back to its chunk_id / pmid / text
-    (data/processed/chunks_meta.json)
+Uses ncbi/MedCPT-Article-Encoder, trained on 255M PubMed query-article
+pairs — chosen over a general-purpose model because published
+comparisons show it performing better specifically on PubMed retrieval
+tasks (see the project's method-comparison write-up for citations).
+
+IMPORTANT: MedCPT has TWO separate encoders that must be used together.
+This file uses the Article Encoder to embed the corpus; the matching
+Query Encoder is used in retrieval/dense_retriever.py to embed the
+user's question. Using a different model — or the wrong MedCPT encoder —
+on either side puts the two vectors in unrelated coordinate spaces and
+silently makes the whole search meaningless.
 
 Usage:
     python embedding/embedder.py
@@ -17,12 +22,34 @@ import json
 from pathlib import Path
 
 import faiss
-from sentence_transformers import SentenceTransformer
+import numpy as np
+import torch
+from transformers import AutoModel, AutoTokenizer
 
-# Small, fast, general-purpose model to start with. Later you can compare
-# this against a biomedical-specific model (e.g. PubMedBERT-based) as one
-# of your Phase 5 experiments.
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = "ncbi/MedCPT-Article-Encoder"
+MAX_LENGTH = 512
+BATCH_SIZE = 16
+
+
+def embed_articles(pairs: list, tokenizer, model) -> np.ndarray:
+    """pairs: list of [title, section_text]. Returns an (N, dim) float32 array."""
+    all_embeds = []
+    with torch.no_grad():
+        for i in range(0, len(pairs), BATCH_SIZE):
+            batch = pairs[i : i + BATCH_SIZE]
+            encoded = tokenizer(
+                batch,
+                truncation=True,
+                padding=True,
+                return_tensors="pt",
+                max_length=MAX_LENGTH,
+            )
+            # MedCPT uses the [CLS] token's last hidden state as the embedding
+            embeds = model(**encoded).last_hidden_state[:, 0, :]
+            all_embeds.append(embeds.numpy())
+            print(f"  Embedded {min(i + BATCH_SIZE, len(pairs))}/{len(pairs)}", end="\r")
+    print()
+    return np.vstack(all_embeds).astype("float32")
 
 
 def main():
@@ -38,16 +65,19 @@ def main():
         print("No chunks found in chunks.json.")
         return
 
-    print(f"Loading embedding model: {MODEL_NAME}")
-    print("(first run downloads the model, ~90MB — may take a few minutes)")
-    model = SentenceTransformer(MODEL_NAME)
+    print(f"Loading MedCPT Article Encoder ({MODEL_NAME})")
+    print("(first run downloads the model — may take a few minutes)")
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    model = AutoModel.from_pretrained(MODEL_NAME)
+    model.eval()
 
-    texts = [c["text"] for c in chunks]
-    print(f"Embedding {len(texts)} chunks...")
-    embeddings = model.encode(texts, show_progress_bar=True, convert_to_numpy=True)
-    embeddings = embeddings.astype("float32")
+    # MedCPT's article encoder was trained on [title, section_text] pairs,
+    # not a single concatenated string, so we keep them as two fields.
+    pairs = [[c.get("title", ""), c["text"]] for c in chunks]
 
-    # normalize vectors so inner product search behaves like cosine similarity
+    print(f"Embedding {len(pairs)} chunks...")
+    embeddings = embed_articles(pairs, tokenizer, model)
+
     faiss.normalize_L2(embeddings)
 
     dim = embeddings.shape[1]
@@ -57,8 +87,6 @@ def main():
     out_dir = Path("data/processed")
     faiss.write_index(index, str(out_dir / "faiss.index"))
 
-    # save chunk metadata in the same order as the vectors, so FAISS result
-    # position i maps directly to chunks[i]
     with open(out_dir / "chunks_meta.json", "w", encoding="utf-8") as f:
         json.dump(chunks, f, ensure_ascii=False, indent=2)
 

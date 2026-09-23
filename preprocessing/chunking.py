@@ -1,13 +1,23 @@
 """
-Phase 2: Text cleaning and chunking for the Medical Literature RAG project.
+Phase 2 (revised again): Structure-aware chunking using PubMed's actual
+section labels.
 
-Reads the raw JSON files produced by ingestion/pubmed_loader.py (Phase 1),
-cleans the text, splits each paper's title + abstract into overlapping
-chunks, and saves everything as a single processed JSON file ready for
-embedding in Phase 3.
+The first version of this script tried to GUESS section boundaries by
+searching the flattened abstract text for words like "BACKGROUND:" — but
+NLM stores that information as an XML attribute (Label), not as text
+inside the abstract, so the guess mostly failed. ingestion/pubmed_loader.py
+now preserves that attribute as an "abstract_sections" field per paper;
+this script uses it directly instead of guessing. Papers with no such
+structure (a single free-text abstract, common for many journals) fall
+back to the same sliding-window chunking as before.
+
+Requires data/raw/*.json to have been fetched with the updated
+pubmed_loader.py (re-run it if your raw files predate this change —
+files fetched before will simply fall back to sliding-window chunking
+for every paper, same as last time).
 
 Usage:
-    python preprocessing/chunking.py --chunk_size 500 --chunk_overlap 100
+    python preprocessing/chunking.py
 """
 
 import argparse
@@ -15,28 +25,27 @@ import json
 import re
 from pathlib import Path
 
+MIN_SECTIONS_TO_TRUST = 2
+FALLBACK_CHUNK_SIZE = 500
+FALLBACK_CHUNK_OVERLAP = 100
+
 
 def clean_text(text: str) -> str:
-    """Basic text cleaning: collapse whitespace, strip stray characters."""
     if not text:
         return ""
-    text = re.sub(r"\s+", " ", text)  # collapse multiple spaces / newlines / tabs
-    text = text.strip()
-    return text
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
 
 
-def chunk_text(text: str, chunk_size: int = 500, chunk_overlap: int = 100) -> list:
-    """
-    Split text into overlapping chunks by character count.
+def normalize_label(label: str) -> str:
+    if not label:
+        return "Unlabeled"
+    return label.strip().title()
 
-    chunk_size / chunk_overlap are in characters for this first, simple
-    version (matches the 500 / 100 starting point from the project plan).
-    You can later swap this for a token-aware splitter if you want chunk
-    sizes measured in LLM tokens instead of characters.
-    """
+
+def sliding_window_chunks(text: str, chunk_size: int = FALLBACK_CHUNK_SIZE, chunk_overlap: int = FALLBACK_CHUNK_OVERLAP) -> list:
     if len(text) <= chunk_size:
         return [text] if text else []
-
     chunks = []
     start = 0
     step = chunk_size - chunk_overlap
@@ -48,13 +57,42 @@ def chunk_text(text: str, chunk_size: int = 500, chunk_overlap: int = 100) -> li
         if end >= len(text):
             break
         start += step
-
     return chunks
 
 
-def process_papers(raw_dir: Path, chunk_size: int, chunk_overlap: int) -> list:
-    """Load all raw JSON files, clean + chunk each paper, attach metadata."""
+def chunk_paper(title: str, abstract: str, abstract_sections: list) -> list:
+    """
+    Returns [(section_label, chunk_text), ...] for one paper. Uses
+    PubMed's real section labels when there are enough of them to be
+    meaningful; falls back to sliding-window chunking over the whole
+    title+abstract otherwise.
+    """
+    real_sections = [
+        (normalize_label(s.get("label", "")), clean_text(s.get("text", "")))
+        for s in (abstract_sections or [])
+        if clean_text(s.get("text", ""))
+    ]
+
+    if len(real_sections) >= MIN_SECTIONS_TO_TRUST:
+        result = []
+        for label, content in real_sections:
+            if len(content) > FALLBACK_CHUNK_SIZE:
+                for i, sub in enumerate(sliding_window_chunks(content)):
+                    sub_label = f"{label} ({i + 1})" if i > 0 else label
+                    result.append((sub_label, sub))
+            else:
+                result.append((label, content))
+        return result
+
+    # fallback: no usable structure, chunk the whole title+abstract
+    full_text = f"{title}. {abstract}" if title else abstract
+    return [("Unstructured", c) for c in sliding_window_chunks(full_text)]
+
+
+def process_papers(raw_dir: Path) -> list:
     processed_chunks = []
+    structured_count = 0
+    unstructured_count = 0
 
     json_files = list(raw_dir.glob("*.json"))
     if not json_files:
@@ -69,21 +107,26 @@ def process_papers(raw_dir: Path, chunk_size: int, chunk_overlap: int) -> list:
             pmid = paper.get("pmid", "unknown")
             title = clean_text(paper.get("title", ""))
             abstract = clean_text(paper.get("abstract", ""))
+            abstract_sections = paper.get("abstract_sections", [])
 
-            # combine title + abstract so title context isn't lost during retrieval
-            full_text = f"{title}. {abstract}" if title else abstract
-            if not full_text.strip():
+            if not abstract.strip():
                 continue
 
-            chunks = chunk_text(full_text, chunk_size, chunk_overlap)
+            chunks = chunk_paper(title, abstract, abstract_sections)
 
-            for i, chunk in enumerate(chunks):
+            if chunks and chunks[0][0] != "Unstructured":
+                structured_count += 1
+            else:
+                unstructured_count += 1
+
+            for i, (label, chunk_text_value) in enumerate(chunks):
                 processed_chunks.append(
                     {
                         "chunk_id": f"{pmid}_{i}",
                         "pmid": pmid,
                         "chunk_index": i,
-                        "text": chunk,
+                        "section": label,
+                        "text": chunk_text_value,
                         "title": title,
                         "year": paper.get("year", ""),
                         "authors": paper.get("authors", []),
@@ -92,35 +135,36 @@ def process_papers(raw_dir: Path, chunk_size: int, chunk_overlap: int) -> list:
                     }
                 )
 
+    print(f"Structured abstracts (real PubMed section labels): {structured_count}")
+    print(f"Unstructured abstracts (fell back to sliding-window): {unstructured_count}")
+
     return processed_chunks
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Clean and chunk raw papers for the RAG pipeline.")
+    parser = argparse.ArgumentParser(description="Structure-aware chunking of raw papers.")
     parser.add_argument("--raw_dir", default="data/raw")
     parser.add_argument("--out_dir", default="data/processed")
-    parser.add_argument("--chunk_size", type=int, default=500)
-    parser.add_argument("--chunk_overlap", type=int, default=100)
     args = parser.parse_args()
 
     raw_dir = Path(args.raw_dir)
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    chunks = process_papers(raw_dir, args.chunk_size, args.chunk_overlap)
+    chunks = process_papers(raw_dir)
 
     out_path = out_dir / "chunks.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(chunks, f, ensure_ascii=False, indent=2)
 
-    print(f"Processed chunks: {len(chunks)}")
+    print(f"\nProcessed chunks: {len(chunks)}")
     print(f"Saved to {out_path}")
 
     if chunks:
         print("\n--- Milestone check: first chunk ---")
         first = chunks[0]
         print(f"chunk_id: {first['chunk_id']}")
-        print(f"pmid:     {first['pmid']}")
+        print(f"section:  {first['section']}")
         print(f"text:     {first['text'][:200]}...")
 
 

@@ -1,0 +1,185 @@
+[
+  {
+    "question": "What are the risk factors for mortality after kidney transplantation?",
+    "relevant_pmids": [
+      "42759976",
+      "42736069"
+    ],
+    "reference_answer": "Higher recipient age and receipt of an expanded criteria donor kidney—especially from donation after circulatory death—were associated with higher post-transplant mortality: the survival benefit of expanded criteria donor transplants declined with increasing recipient age, and 75-year-olds receiving expanded criteria/donation after circulatory death kidneys had similar five-year survival to dialysis and a threefold higher early post‑transplant mortality. By contrast, standard criteria donor transplantation was consistently associated with a survival benefit across ages."
+  },
+  {
+    "question": "How does survival compare between deceased donor transplantation and continued dialysis?",
+    "relevant_pmids": [
+      "42759976"
+    ],
+    "reference_answer": "Standard-criteria donor transplantation (both donation after brain death and after circulatory death) showed higher estimated five-year survival than continued dialysis regardless of recipient age. The survival benefit for expanded-criteria donor transplantation, particularly expanded-criteria donor/donation after circulatory death, decreased with increasing recipient age and was statistically uncertain in the oldest patients; for example, among 75‑year‑olds five‑year survival after expanded-criteria donor/donation after circulatory death transplantation was 59% versus 55% with continued dialysis (hazard ratio 0.97, 95% CI 0.70–1.33), and this group had a threefold higher early post-transplant mortality than those continuing dialysis. Standard-criteria donor kidney transplantation was consistently associated with a survival benefit compared with continued dialysis."
+  },
+  {
+    "question": "What factors affect long-term kidney graft survival?",
+    "relevant_pmids": [
+      "42736069",
+      "42755587",
+      "42731581"
+    ],
+    "reference_answer": "Chronic rejection (HR 3.23), coronary artery disease (HR 1.68), and steroid use (HR 1.93) were independently associated with increased risk of long-term graft loss, while antiproliferative agent use was independently associated with improved graft survival (HR 0.37). Antibody-mediated rejection (ABMR) detected on one-year protocol biopsy was associated with inferior 10-year death-censored graft survival (HR 2.79; OR for graft failure 3.86). Delayed graft function (DGF) predicted substantially worse long-term outcomes (death-censored graft loss HR 2.02, overall graft loss HR 2.04), and DGF was independently predicted by higher recipient BMI, pre-transplant dialysis, longer cold ischemia time, and higher refitted KDRI."
+  },
+  {
+    "question": "What is the impact of expanded criteria donors on transplant outcomes?",
+    "relevant_pmids": [
+      "42759976"
+    ],
+    "reference_answer": "Expanded criteria donor (ECD) transplants showed a declining survival benefit with increasing recipient age, particularly for ECD donation after circulatory death (DCD). For example, among 75-year-olds five‑year survival after ECD/DCD transplantation was 59% versus 55% with continued dialysis (hazard ratio 0.97, 95% CI 0.70–1.33), and this group had a threefold higher early post‑transplant mortality than those remaining on dialysis. By contrast, standard criteria donor transplantation was consistently associated with a survival benefit versus continued dialysis."
+  },
+  {
+    "question": "How does recipient age affect the survival benefit of transplantation?",
+    "relevant_pmids": [
+      "42759976"
+    ],
+    "reference_answer": "Standard-criteria donor transplantation showed higher estimated five‑year survival than continued dialysis regardless of recipient age. By contrast, the survival benefit of expanded-criteria donor transplantation declined with increasing recipient age, particularly for expanded-criteria/donation-after-circulatory-death grafts; for example, among 75‑year‑olds five‑year survival after expanded-criteria/donation-after-circulatory‑death transplantation (59%) did not differ significantly from dialysis (55%) (hazard ratio 0.97). Older recipients of expanded‑criteria grafts also experienced a threefold higher early post‑transplant mortality, making their estimated survival advantage smaller and more statistically uncertain."
+  },
+  {
+    "question": "What are the complications of kidney transplantation?",
+    "relevant_pmids": [
+      "42751027",
+      "42731910"
+    ],
+    "reference_answer": "Complications after kidney transplantation in children include impaired linear growth and broader developmental challenges; chronic graft dysfunction, persistent inflammation, metabolic complications, and cumulative corticosteroid exposure are associated with poorer post‑transplant growth. In simultaneous pancreas–kidney transplant (SPK), pancreas transplantation carries the highest rate of surgical complications among solid‑organ transplants, with gastrointestinal bleeding from the donor–recipient enteric anastomosis being an uncommon but potentially life‑threatening complication. Management options for enteric anastomotic bleeding (endoscopic therapy, interventional radiology embolization, surgical revision) are limited by altered postoperative anatomy, risk of bowel ischemia with embolization, and increased morbidity or jeopardized graft integrity with surgical revision."
+  },
+  {
+    "question": "How does diabetes affect outcomes after kidney transplantation?",
+    "relevant_pmids": [
+      "42759614"
+    ],
+    "reference_answer": "In 132 insulin‑independent type 2 diabetic patients undergoing kidney transplantation, 90.9% progressed to maintenance insulin therapy within one year, including all patients who were on oral antidiabetic agents at transplant. Patients who required insulin had significantly higher one‑year HbA1c, and the authors attribute pre‑transplant insulin independence being deceptive to altered insulin clearance in ESRD. By contrast, among 449 non‑diabetic kidney recipients the incidence of new‑onset diabetes was 8%, leading the authors to recommend re‑evaluating SPK selection criteria for this high‑risk population."
+  },
+  {
+    "question": "What is the role of immunosuppression in preventing graft rejection?",
+    "relevant_pmids": [
+      "42741106",
+      "42742306",
+      "42737533"
+    ],
+    "reference_answer": "Immunosuppressants are given to kidney transplant recipients to prevent graft rejection, but require a delicate balance because over‑immunosuppression increases the risk of infectious complications. Immunosuppression regimens influence post‑transplant inflammatory urinary biomarker profiles, which evolve between pre‑ and post‑transplant states. An everolimus‑involving (mTOR inhibitor) immunosuppressive regimen attenuated renal interstitial fibrosis, suppressed mTOR signaling, and showed comparable rates of acute rejection and graft survival versus non‑everolimus regimens."
+  },
+  {
+    "question": "How does chronic kidney disease progress before dialysis is needed?",
+    "relevant_pmids": [
+      "42724472"
+    ],
+    "reference_answer": "Progression to kidney failure within 2 and 5 years in CKD stages G3–G5 can be estimated using the Kidney Failure Risk Equation (KFRE). In a 2,168-patient French cohort, KFRE discrimination was uniformly high (AUROC > 0.89), but calibration and clinical utility varied with the eGFR equation and biomarker used. Creatinine-based CKD-EPI 2009 and EKFC equations gave robust and accurate KFRE predictions (EKFC creatinine showed slightly improved clinical utility at a 40% decision threshold), whereas cystatin C–based equations did not improve prediction."
+  },
+  {
+    "question": "What biomarkers are used to monitor kidney function after transplant?",
+    "relevant_pmids": [
+      "42741106"
+    ],
+    "reference_answer": "Urine inflammatory biomarkers measured to monitor kidney transplant recipients included TARC (CCL17), tumor necrosis factor alpha (TNF-α), the antimicrobial peptide Ribonuclease 7, and Cathelicidin. TARC and TNF-α were higher in patients with CKD than in donors or the same patients post-transplant; Ribonuclease 7 was higher in donors than recipients, and Cathelicidin was higher in recipients than donors. Biomarker levels were normalized to urine creatinine and overall urine inflammatory profiles tended to decrease after transplant."
+  },
+  {
+    "question": "How does quality of life change after kidney transplantation compared to dialysis?",
+    "relevant_pmids": [
+      "42766229"
+    ],
+    "reference_answer": "Shortly after kidney transplantation, four SF-36 dimensions—Bodily Pain, Vitality, Social Functioning, and Mental Health—showed general improvement, with only Bodily Pain differing between preemptive (PKT) and non-preemptive (nPKT) groups. Two dimensions (Role Physical and General Health) exhibited differential item functioning and response shift: accounting for these showed a deterioration in Role Physical for PKT patients and a slightly larger improvement in General Health than would be estimated if DIF and RS were ignored."
+  },
+  {
+    "question": "What are the risk factors for chronic kidney disease progression?",
+    "relevant_pmids": [
+      "42751780",
+      "42733719"
+    ],
+    "reference_answer": "Biological sex influences progression: women have higher CKD prevalence but are less likely to progress to kidney failure, initiate dialysis, or receive transplantation, indicating sex-related differences in CKD progression. Pregnancy complications and hypertensive disorders of pregnancy increase future CKD risk, and menopause and aging accelerate CKD progression in women due to declining estradiol and shifts in renal estrogen receptor profiles; endocrine and metabolic disorders such as polycystic ovary syndrome increase susceptibility to CKD. Genetic variants identified by GWAS and prioritized by machine-learning (including ABC transporter–related genes ABCA13, ABCA4, and ABCC4, with ABCA4 showing substantial kidney expression) are candidate genetic risk factors for CKD, and CKD is tightly intertwined with cardiovascular disease."
+  },
+  {
+    "question": "How does cardiovascular disease relate to chronic kidney disease outcomes?",
+    "relevant_pmids": [
+      "42741979",
+      "42754276"
+    ],
+    "reference_answer": "Cardiovascular events are the leading cause of morbidity and mortality in patients with end-stage renal disease undergoing kidney transplantation, with 17.55% of the studied cohort experiencing a CVE within one year post-transplant. Hypertension is identified as the primary modifiable risk factor for cardiorenal complications in chronic kidney disease, and lowering blood pressure reduces both renal and cardiovascular complications. Clinical trials in CKD explicitly include cardiovascular events (myocardial infarction, heart failure hospitalization, stroke) as key components of composite outcomes alongside kidney failure, eGFR decline ≥40%, and all-cause mortality."
+  },
+  {
+    "question": "What is the effect of dialysis modality on patient outcomes?",
+    "relevant_pmids": [
+      "42733506"
+    ],
+    "reference_answer": "Patients on dialysis had lower cognitive scores than healthy controls, with hemodialysis patients showing the lowest Montreal Cognitive Assessment score (20.29 ± 5.49) and the highest prevalence of cognitive impairment (48.4%) versus 37.5% for peritoneal dialysis, 38.1% for transplant recipients, and 15.0% for controls. Hemodialysis patients performed significantly worse than kidney transplant recipients in the attention domain (p = 0.015). After multivariable adjustment, dialysis modality was not an independent predictor of cognitive impairment (p = 0.123); age and education were the only independent predictors, and higher education reduced impairment risk by 93.9% (adjusted OR 0.061, p < 0.001)."
+  },
+  {
+    "question": "How does donation after circulatory death compare to donation after brain death?",
+    "relevant_pmids": [
+      "42759976"
+    ],
+    "reference_answer": "Standard-criteria donor transplantation after circulatory death and after brain death both showed higher estimated five-year survival than continued dialysis regardless of recipient age. For expanded-criteria donors the survival benefit declined with increasing recipient age, and especially for expanded-criteria donor/donation after circulatory death: among 75-year-olds five-year survival after expanded-criteria circulatory-death transplantation did not differ significantly from dialysis (59% vs 55%; hazard ratio 0.97, 95% CI 0.70–1.33). This expanded-criteria circulatory-death group had a threefold higher early post-transplant mortality than those continuing dialysis."
+  },
+  {
+    "question": "How does delayed graft function affect long-term outcomes?",
+    "relevant_pmids": [
+      "42731581"
+    ],
+    "reference_answer": "Delayed graft function (occurring in 29.1% of recipients) was associated with approximately a twofold higher risk of death-censored graft loss (HR 2.02, 95% CI 1.11–3.65; p = 0.021) and overall graft loss (HR 2.04, 95% CI 1.47–2.82; p < 0.001). DGF identified a high-risk subgroup with substantially inferior long-term kidney graft survival independent of rejection and allocation era and was not associated with higher kidney or heart rejection at 1 year."
+  },
+  {
+    "question": "How does hypertension management affect chronic kidney disease progression?",
+    "relevant_pmids": [
+      "42754276"
+    ],
+    "reference_answer": "Hypertension is the primary modifiable risk factor for cardiorenal complications in chronic kidney disease, and lowering blood pressure in patients with CKD reduces renal and cardiovascular complications. Guidelines advise initiating BP-lowering therapy with ACE inhibitors or angiotensin receptor blockers, but there is no strong evidence supporting a preferred agent beyond that. A phase 3 cluster-randomised trial is testing the hypothesis that, after ACEi/ARB, diuretics should be the second-line treatment for uncontrolled hypertension in moderate-to-severe CKD; the trial will compare a diuretic-based algorithm versus standard care with a composite primary endpoint of kidney failure with replacement therapy, ≥40% eGFR decline, cardiovascular events, and all-cause mortality, enrolling 720 patients."
+  },
+  {
+    "question": "How does donor age affect transplant outcomes?",
+    "relevant_pmids": [
+      "42767669"
+    ],
+    "reference_answer": "The abstract does not report or analyze the effect of donor age on transplant outcomes. It instead compares dual kidney transplantation (DKT) versus single kidney transplantation after 2:1 propensity score matching (balancing recipient age and KDPI) and finds DKT had higher 1-, 3-, and 5-year graft survival (92.2%, 81.8%, and 69.8% vs 87.7%, 75.5%, and 59.9%; P < 0.001) with similar delayed graft function rates."
+  },
+  {
+    "question": "How effective are different immunosuppressive regimens at preventing rejection?",
+    "relevant_pmids": [
+      "42736069"
+    ],
+    "reference_answer": "Steroid use was associated with reduced graft survival (Kaplan-Meier P = .002) and independently increased the risk of graft loss (multivariable Cox HR 1.93, 95% CI 1.15–3.24). Use of antiproliferative agents was associated with improved graft survival (Kaplan-Meier P < .001) and independently reduced the risk of graft loss (multivariable Cox HR 0.37, 95% CI 0.18–0.74)."
+  },
+  {
+    "question": "How does cognitive function differ across different kidney replacement therapies?",
+    "relevant_pmids": [
+      "42733506"
+    ],
+    "reference_answer": "All patient groups (peritoneal dialysis, hemodialysis, and kidney transplant recipients) had significantly lower Montreal Cognitive Assessment (MoCA) scores than healthy controls, with hemodialysis patients showing the lowest mean score (20.29 ± 5.49 vs. 24.52 ± 2.98, p < 0.001). Prevalence of cognitive impairment (MoCA <26) was 37.5% for peritoneal dialysis, 48.4% for hemodialysis, 38.1% for kidney transplant recipients, and 15.0% for healthy controls; hemodialysis patients performed significantly worse than transplant recipients in the attention domain (p = 0.015). In multivariable analysis, age and education were the only independent predictors of cognitive scores, treatment modality was not an independent risk factor (p = 0.123), and higher education reduced the risk of impairment by 93.9% (adjusted OR 0.061, p < 0.001)."
+  },
+  {
+    "question": "What surgical techniques improve efficiency in paired kidney transplantation?",
+    "relevant_pmids": [
+      "42761881"
+    ],
+    "reference_answer": "Robotic-assisted living donor nephrectomies and robotic-assisted living donor kidney transplants performed using a single robotic platform were used in 2-way kidney paired donation. Both donors had no perioperative or postoperative complications, and both recipients demonstrated immediate graft function with progressive normalization of serum creatinine through 24 months. These procedures were completed at a single public county hospital, which plans to expand its robotic surgery program."
+  },
+  {
+    "question": "What is the audiological or hearing health profile of transplant candidates?",
+    "relevant_pmids": [
+      "42732618"
+    ],
+    "reference_answer": "Among 36 adult kidney or liver transplant candidates, 30.6% had hearing loss (CLD 31.6%, CKD 29.4%), predominantly mild-to-moderate, with symmetrical high‑frequency sensorineural patterns. Distortion product otoacoustic emission abnormalities were present in 56.9% of ears, indicating subclinical cochlear dysfunction, and 38.2% of participants reported tinnitus (all rated slight or mild). Use of acetylsalicylic acid was significantly associated with hearing loss in CKD patients (P = .003), and the authors conclude comprehensive audiologic assessment including DPOAEs may improve pre‑transplant evaluation."
+  },
+  {
+    "question": "How does a Mediterranean diet affect nutrition in chronic kidney disease patients?",
+    "relevant_pmids": [
+      "42742154"
+    ],
+    "reference_answer": "Evidence in the abstract shows Mediterranean- and plant-based diets have a protective role in preventing chronic kidney disease and in reducing associated cardiovascular risks, in contrast to the adverse effects of Western dietary patterns. For CKD patients, long-term nutritional benefit depends on evidence-based, physiologically appropriate, sensorially satisfying and culturally rooted strategies; the proposed \"glow-food\" approach uses seasonal, minimally processed Mediterranean ingredients in visually appealing, flavorful dishes to improve adherence and make tailored nutrition sustainable."
+  },
+  {
+    "question": "How does ambient temperature or climate affect chronic kidney disease risk?",
+    "relevant_pmids": [
+      "42749859"
+    ],
+    "reference_answer": "Epidemiological data consistently link hot ambient temperatures with increased kidney morbidity, and heat‑stress kidney injury has been associated with chronic kidney disease in some occupational and agricultural studies. Increasing ambient temperatures and more frequent heatwaves are expected to drive greater CKD incidence, prevalence and progression and cause acute morbidity and accelerated kidney function decline in people with existing CKD. Structural determinants (housing quality, occupational exposure, access to cooling), age and comorbidities compound vulnerability, and evidence guiding individualized mitigation for people with CKD remains limited."
+  },
+  {
+    "question": "What is the relationship between anemia and iron regulation in chronic kidney disease?",
+    "relevant_pmids": [
+      "42732007"
+    ],
+    "reference_answer": "Chronic kidney disease disrupts iron homeostasis and increased hepcidin levels reduce iron bioavailability for erythropoiesis. In this cohort of 94 non-diabetic CKD patients, serum hepcidin was slightly higher in anemic patients and showed a significant negative correlation with hemoglobin (ρ = -0.277, p = 0.012) but was not independently associated with hemoglobin in multivariable regression. Transferrin saturation (TSAT) was lower in anemic patients, showed a modest positive correlation with hemoglobin, and was independently associated with hemoglobin (β = 0.047, 95% CI 0.012–0.082, P = 0.009), while ferritin and erythropoietin were not."
+  }
+]

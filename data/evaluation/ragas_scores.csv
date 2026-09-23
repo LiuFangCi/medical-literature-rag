@@ -1,0 +1,101 @@
+question_id,question,config,retrieval,reranker,faithfulness,answer_relevancy,context_precision,context_recall
+1,What are the risk factors for mortality after kidney transplantation?,A_dense_only,dense,False,1.0,0.7558522,0.25,0.0
+1,What are the risk factors for mortality after kidney transplantation?,B_hybrid,hybrid,False,0.8571428571428571,0.78392094,0.0,0.0
+1,What are the risk factors for mortality after kidney transplantation?,C_hybrid_rerank,hybrid,True,0.8333333333333334,0.7810506,0.25,0.0
+1,What are the risk factors for mortality after kidney transplantation?,D_dense_rerank,dense,True,0.8333333333333334,0.8620197,0.0,0.0
+2,How does survival compare between deceased donor transplantation and continued dialysis?,A_dense_only,dense,False,1.0,0.82567406,0.6791666666666667,0.6
+2,How does survival compare between deceased donor transplantation and continued dialysis?,B_hybrid,hybrid,False,1.0,0.80789995,1.0,0.5
+2,How does survival compare between deceased donor transplantation and continued dialysis?,C_hybrid_rerank,hybrid,True,1.0,0.8724522,1.0,0.5
+2,How does survival compare between deceased donor transplantation and continued dialysis?,D_dense_rerank,dense,True,1.0,0.85622543,1.0,0.6
+3,What factors affect long-term kidney graft survival?,A_dense_only,dense,False,0.8,0.89734334,1.0,0.0
+3,What factors affect long-term kidney graft survival?,B_hybrid,hybrid,False,0.8,0.7024691,1.0,0.0
+3,What factors affect long-term kidney graft survival?,C_hybrid_rerank,hybrid,True,1.0,0.902484,0.8875,0.0
+3,What factors affect long-term kidney graft survival?,D_dense_rerank,dense,True,0.75,0.8718405,0.8875,0.42857142857142855
+4,What is the impact of expanded criteria donors on transplant outcomes?,A_dense_only,dense,False,1.0,0.67589074,0.4777777777777778,0.0
+4,What is the impact of expanded criteria donors on transplant outcomes?,B_hybrid,hybrid,False,1.0,0.67784166,1.0,0.5
+4,What is the impact of expanded criteria donors on transplant outcomes?,C_hybrid_rerank,hybrid,True,1.0,0.6899686,1.0,0.5
+4,What is the impact of expanded criteria donors on transplant outcomes?,D_dense_rerank,dense,True,1.0,0.6752313,1.0,0.6
+5,How does recipient age affect the survival benefit of transplantation?,A_dense_only,dense,False,1.0,0.7296521,0.5,0.5
+5,How does recipient age affect the survival benefit of transplantation?,B_hybrid,hybrid,False,1.0,0.72291857,1.0,0.75
+5,How does recipient age affect the survival benefit of transplantation?,C_hybrid_rerank,hybrid,True,1.0,0.7430818,1.0,0.8
+5,How does recipient age affect the survival benefit of transplantation?,D_dense_rerank,dense,True,1.0,0.71416277,1.0,0.75
+6,What are the complications of kidney transplantation?,A_dense_only,dense,False,0.8333333333333334,0.8408907,1.0,0.4
+6,What are the complications of kidney transplantation?,B_hybrid,hybrid,False,1.0,0.8400386,0.8875,0.5
+6,What are the complications of kidney transplantation?,C_hybrid_rerank,hybrid,True,1.0,0.8324146,1.0,0.2857142857142857
+6,What are the complications of kidney transplantation?,D_dense_rerank,dense,True,1.0,0.6215828,1.0,0.2857142857142857
+7,How does diabetes affect outcomes after kidney transplantation?,A_dense_only,dense,False,0.8,0.82161254,0.9166666666666666,0.0
+7,How does diabetes affect outcomes after kidney transplantation?,B_hybrid,hybrid,False,1.0,0.80927587,1.0,0.6666666666666666
+7,How does diabetes affect outcomes after kidney transplantation?,C_hybrid_rerank,hybrid,True,0.7142857142857143,0.80435324,0.8666666666666667,0.5
+7,How does diabetes affect outcomes after kidney transplantation?,D_dense_rerank,dense,True,1.0,0.83260363,0.8055555555555555,0.5
+8,What is the role of immunosuppression in preventing graft rejection?,A_dense_only,dense,False,1.0,0.7304683,1.0,0.5
+8,What is the role of immunosuppression in preventing graft rejection?,B_hybrid,hybrid,False,1.0,0.73684454,1.0,0.42857142857142855
+8,What is the role of immunosuppression in preventing graft rejection?,C_hybrid_rerank,hybrid,True,1.0,0.72943896,1.0,0.2857142857142857
+8,What is the role of immunosuppression in preventing graft rejection?,D_dense_rerank,dense,True,1.0,0.7081602,1.0,0.2857142857142857
+9,How does chronic kidney disease progress before dialysis is needed?,A_dense_only,dense,False,1.0,0.85260767,1.0,0.0
+9,How does chronic kidney disease progress before dialysis is needed?,B_hybrid,hybrid,False,1.0,0.9178526,1.0,0.0
+9,How does chronic kidney disease progress before dialysis is needed?,C_hybrid_rerank,hybrid,True,1.0,0.8485548,0.75,0.0
+9,How does chronic kidney disease progress before dialysis is needed?,D_dense_rerank,dense,True,1.0,0.7332373,0.8041666666666667,1.0
+10,What biomarkers are used to monitor kidney function after transplant?,A_dense_only,dense,False,1.0,0.7606681,0.9166666666666666,0.1111111111111111
+10,What biomarkers are used to monitor kidney function after transplant?,B_hybrid,hybrid,False,1.0,0.91397446,0.5333333333333333,0.16666666666666666
+10,What biomarkers are used to monitor kidney function after transplant?,C_hybrid_rerank,hybrid,True,0.8333333333333334,0.75710493,0.8333333333333333,0.16666666666666666
+10,What biomarkers are used to monitor kidney function after transplant?,D_dense_rerank,dense,True,0.7777777777777778,0.833389,0.8333333333333333,0.16666666666666666
+11,How does quality of life change after kidney transplantation compared to dialysis?,A_dense_only,dense,False,1.0,0.7144649,1.0,1.0
+11,How does quality of life change after kidney transplantation compared to dialysis?,B_hybrid,hybrid,False,1.0,0.82285565,1.0,0.0
+11,How does quality of life change after kidney transplantation compared to dialysis?,C_hybrid_rerank,hybrid,True,1.0,0.8599787,1.0,0.0
+11,How does quality of life change after kidney transplantation compared to dialysis?,D_dense_rerank,dense,True,1.0,0.847315,1.0,0.0
+12,What are the risk factors for chronic kidney disease progression?,A_dense_only,dense,False,0.875,0.78206015,1.0,0.6666666666666666
+12,What are the risk factors for chronic kidney disease progression?,B_hybrid,hybrid,False,1.0,0.7459228,1.0,1.0
+12,What are the risk factors for chronic kidney disease progression?,C_hybrid_rerank,hybrid,True,0.8571428571428571,0.8337774,1.0,0.5
+12,What are the risk factors for chronic kidney disease progression?,D_dense_rerank,dense,True,0.7,0.76586264,1.0,0.4166666666666667
+13,How does cardiovascular disease relate to chronic kidney disease outcomes?,A_dense_only,dense,False,1.0,0.7907447,1.0,0.2
+13,How does cardiovascular disease relate to chronic kidney disease outcomes?,B_hybrid,hybrid,False,1.0,0.75070924,0.5833333333333333,0.0
+13,How does cardiovascular disease relate to chronic kidney disease outcomes?,C_hybrid_rerank,hybrid,True,1.0,0.84911937,0.7555555555555555,0.25
+13,How does cardiovascular disease relate to chronic kidney disease outcomes?,D_dense_rerank,dense,True,1.0,0.8320434,0.7555555555555555,0.4
+14,What is the effect of dialysis modality on patient outcomes?,A_dense_only,dense,False,1.0,0.7452242,1.0,0.0
+14,What is the effect of dialysis modality on patient outcomes?,B_hybrid,hybrid,False,1.0,0.8495708,0.5833333333333333,0.0
+14,What is the effect of dialysis modality on patient outcomes?,C_hybrid_rerank,hybrid,True,1.0,0.7363327,1.0,0.125
+14,What is the effect of dialysis modality on patient outcomes?,D_dense_rerank,dense,True,1.0,0.75972104,1.0,0.2857142857142857
+15,How does donation after circulatory death compare to donation after brain death?,A_dense_only,dense,False,1.0,0.7555523,1.0,0.6666666666666666
+15,How does donation after circulatory death compare to donation after brain death?,B_hybrid,hybrid,False,1.0,0.71409607,1.0,0.75
+15,How does donation after circulatory death compare to donation after brain death?,C_hybrid_rerank,hybrid,True,1.0,0.76674,1.0,0.7142857142857143
+15,How does donation after circulatory death compare to donation after brain death?,D_dense_rerank,dense,True,1.0,0.7544532,1.0,0.75
+16,How does delayed graft function affect long-term outcomes?,A_dense_only,dense,False,1.0,0.75342363,0.8333333333333333,0.2857142857142857
+16,How does delayed graft function affect long-term outcomes?,B_hybrid,hybrid,False,1.0,0.6205544,0.8333333333333333,0.2
+16,How does delayed graft function affect long-term outcomes?,C_hybrid_rerank,hybrid,True,1.0,0.72489786,0.8041666666666667,1.0
+16,How does delayed graft function affect long-term outcomes?,D_dense_rerank,dense,True,1.0,0.67680424,0.8041666666666667,1.0
+17,How does hypertension management affect chronic kidney disease progression?,A_dense_only,dense,False,1.0,0.7949535,1.0,0.625
+17,How does hypertension management affect chronic kidney disease progression?,B_hybrid,hybrid,False,1.0,0.79173654,0.25,0.5
+17,How does hypertension management affect chronic kidney disease progression?,C_hybrid_rerank,hybrid,True,1.0,0.69673604,0.45,0.7142857142857143
+17,How does hypertension management affect chronic kidney disease progression?,D_dense_rerank,dense,True,1.0,0.8069617,0.95,0.7777777777777778
+18,How does donor age affect transplant outcomes?,A_dense_only,dense,False,1.0,0.8591754,0.41666666666666663,0.0
+18,How does donor age affect transplant outcomes?,B_hybrid,hybrid,False,1.0,0.86525464,1.0,0.25
+18,How does donor age affect transplant outcomes?,C_hybrid_rerank,hybrid,True,1.0,0.8006349,0.95,0.0
+18,How does donor age affect transplant outcomes?,D_dense_rerank,dense,True,1.0,0.8570445,1.0,0.0
+19,How effective are different immunosuppressive regimens at preventing rejection?,A_dense_only,dense,False,1.0,0.8503503,1.0,0.0
+19,How effective are different immunosuppressive regimens at preventing rejection?,B_hybrid,hybrid,False,1.0,0.7446682,1.0,0.0
+19,How effective are different immunosuppressive regimens at preventing rejection?,C_hybrid_rerank,hybrid,True,1.0,0.8285064,0.95,0.0
+19,How effective are different immunosuppressive regimens at preventing rejection?,D_dense_rerank,dense,True,1.0,0.7811467,1.0,0.5
+20,How does cognitive function differ across different kidney replacement therapies?,A_dense_only,dense,False,1.0,0.71169573,1.0,0.8
+20,How does cognitive function differ across different kidney replacement therapies?,B_hybrid,hybrid,False,1.0,0.75465614,1.0,0.9
+20,How does cognitive function differ across different kidney replacement therapies?,C_hybrid_rerank,hybrid,True,1.0,0.6629364,1.0,0.4
+20,How does cognitive function differ across different kidney replacement therapies?,D_dense_rerank,dense,True,1.0,0.6627565,1.0,0.2857142857142857
+21,What surgical techniques improve efficiency in paired kidney transplantation?,A_dense_only,dense,False,1.0,0.7368663,0.8875,1.0
+21,What surgical techniques improve efficiency in paired kidney transplantation?,B_hybrid,hybrid,False,0.5,0.8586393,1.0,0.25
+21,What surgical techniques improve efficiency in paired kidney transplantation?,C_hybrid_rerank,hybrid,True,0.6666666666666666,0.92907333,0.8333333333333333,0.0
+21,What surgical techniques improve efficiency in paired kidney transplantation?,D_dense_rerank,dense,True,0.8888888888888888,0.7884074,0.8041666666666667,0.8
+22,What is the audiological or hearing health profile of transplant candidates?,A_dense_only,dense,False,1.0,0.7680512,1.0,1.0
+22,What is the audiological or hearing health profile of transplant candidates?,B_hybrid,hybrid,False,1.0,0.7786053,0.95,0.9090909090909091
+22,What is the audiological or hearing health profile of transplant candidates?,C_hybrid_rerank,hybrid,True,1.0,0.7871687,1.0,1.0
+22,What is the audiological or hearing health profile of transplant candidates?,D_dense_rerank,dense,True,1.0,0.7782797,1.0,0.9166666666666666
+23,How does a Mediterranean diet affect nutrition in chronic kidney disease patients?,A_dense_only,dense,False,1.0,0.81214386,1.0,1.0
+23,How does a Mediterranean diet affect nutrition in chronic kidney disease patients?,B_hybrid,hybrid,False,1.0,0.72337174,1.0,1.0
+23,How does a Mediterranean diet affect nutrition in chronic kidney disease patients?,C_hybrid_rerank,hybrid,True,1.0,0.7155283,1.0,1.0
+23,How does a Mediterranean diet affect nutrition in chronic kidney disease patients?,D_dense_rerank,dense,True,1.0,0.8097188,1.0,1.0
+24,How does ambient temperature or climate affect chronic kidney disease risk?,A_dense_only,dense,False,1.0,0.79036444,1.0,0.6666666666666666
+24,How does ambient temperature or climate affect chronic kidney disease risk?,B_hybrid,hybrid,False,1.0,0.8289891,1.0,0.6666666666666666
+24,How does ambient temperature or climate affect chronic kidney disease risk?,C_hybrid_rerank,hybrid,True,1.0,0.79926395,1.0,0.5714285714285714
+24,How does ambient temperature or climate affect chronic kidney disease risk?,D_dense_rerank,dense,True,1.0,0.81251305,1.0,0.6666666666666666
+25,What is the relationship between anemia and iron regulation in chronic kidney disease?,A_dense_only,dense,False,1.0,0.7946052,1.0,0.8181818181818182
+25,What is the relationship between anemia and iron regulation in chronic kidney disease?,B_hybrid,hybrid,False,1.0,0.77735,1.0,0.5454545454545454
+25,What is the relationship between anemia and iron regulation in chronic kidney disease?,C_hybrid_rerank,hybrid,True,1.0,0.7535792,1.0,0.8181818181818182
+25,What is the relationship between anemia and iron regulation in chronic kidney disease?,D_dense_rerank,dense,True,1.0,0.7989087,1.0,0.7

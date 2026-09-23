@@ -1,0 +1,68 @@
+[
+  {
+    "query": "What are the risk factors for mortality after kidney transplantation?",
+    "config": "A_dense_only",
+    "pmids_retrieved": [
+      "42759976",
+      "42759976",
+      "42736069",
+      "42751273",
+      "42766229"
+    ]
+  },
+  {
+    "query": "What are the risk factors for mortality after kidney transplantation?",
+    "config": "B_hybrid",
+    "pmids_retrieved": [
+      "42759976",
+      "42759976",
+      "42751273",
+      "42749859",
+      "42736069"
+    ]
+  },
+  {
+    "query": "What are the risk factors for mortality after kidney transplantation?",
+    "config": "C_hybrid_rerank",
+    "pmids_retrieved": [
+      "42759976",
+      "42759976",
+      "42741979",
+      "42731581",
+      "42733506"
+    ]
+  },
+  {
+    "query": "How does survival compare between deceased donor transplantation and continued dialysis?",
+    "config": "A_dense_only",
+    "pmids_retrieved": [
+      "42759976",
+      "42759976",
+      "42759976",
+      "42759976",
+      "42736069"
+    ]
+  },
+  {
+    "query": "How does survival compare between deceased donor transplantation and continued dialysis?",
+    "config": "B_hybrid",
+    "pmids_retrieved": [
+      "42759976",
+      "42759976",
+      "42759976",
+      "42759976",
+      "42736069"
+    ]
+  },
+  {
+    "query": "How does survival compare between deceased donor transplantation and continued dialysis?",
+    "config": "C_hybrid_rerank",
+    "pmids_retrieved": [
+      "42759976",
+      "42759976",
+      "42759976",
+      "42759976",
+      "42759976"
+    ]
+  }
+]
