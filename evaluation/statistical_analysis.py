@@ -26,6 +26,7 @@ Usage:
 """
 
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -72,11 +73,14 @@ def run_two_way_anova(df: pd.DataFrame, metric: str):
         detailed=True,
         correction=True,
     )
-    # print every column pingouin returned, whatever it happens to be
-    # named on this version, rather than risk silently dropping the
-    # p-value column because of a naming mismatch
+    # print every column pingouin returned (so no p-value column gets
+    # silently dropped due to a naming mismatch), except effect-size
+    # columns (ng2/np2/n2), which were explicitly excluded from this
+    # analysis
+    effsize_cols = {"ng2", "np2", "n2"}
+    show_cols = [c for c in aov.columns if c not in effsize_cols]
     with pd.option_context("display.max_columns", None, "display.width", 200):
-        print(aov.round(4))
+        print(aov[show_cols].round(4))
 
 
 def run_friedman_and_wilcoxon(df: pd.DataFrame, metric: str):
@@ -112,15 +116,45 @@ def run_friedman_and_wilcoxon(df: pd.DataFrame, metric: str):
         print(f"{label:<35} {a} vs {b}: p = {p:.4f}")
 
 
-def main():
-    df = load_scores()
-    print(f"Loaded {len(df)} rows ({df['question_id'].nunique()} questions x {df['config'].nunique()} configs).")
+class Tee:
+    """Duplicates every print() to both the terminal and a file, so the
+    full statistical report survives after you close the terminal —
+    previously this only ever existed on-screen and in your screenshots."""
 
-    for metric in ["recall_at_5", "mrr"]:
-        print(f"\n{'=' * 70}\nMETRIC: {metric}\n{'=' * 70}")
-        run_normality_check(df, metric)
-        run_two_way_anova(df, metric)
-        run_friedman_and_wilcoxon(df, metric)
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for s in self.streams:
+            s.write(data)
+
+    def flush(self):
+        for s in self.streams:
+            s.flush()
+
+
+def main():
+    out_path = Path("data/evaluation/statistical_analysis_report.txt")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(out_path, "w", encoding="utf-8") as report_file:
+        original_stdout = sys.stdout
+        sys.stdout = Tee(original_stdout, report_file)
+        try:
+            print(f"Statistical analysis report — generated {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
+
+            df = load_scores()
+            print(f"Loaded {len(df)} rows ({df['question_id'].nunique()} questions x {df['config'].nunique()} configs).")
+
+            for metric in ["recall_at_5", "mrr"]:
+                print(f"\n{'=' * 70}\nMETRIC: {metric}\n{'=' * 70}")
+                run_normality_check(df, metric)
+                run_two_way_anova(df, metric)
+                run_friedman_and_wilcoxon(df, metric)
+        finally:
+            sys.stdout = original_stdout
+
+    print(f"\nSaved full report to {out_path}")
 
 
 if __name__ == "__main__":
